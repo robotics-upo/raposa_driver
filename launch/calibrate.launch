@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="t" default="10"/>
+  <arg name="v" default="200"/>
+  <arg name="type" default="forward"/>
+
+  <node name="raposa_calib" pkg="raposa_driver" type="raposa_calibration" args="$(arg type) $(arg t) $(arg v)" output="screen" />
+  <node name="joy_node" pkg="joy" type="joy_node" />
+  <!-- TODO: This is temporary: writes all topics. It would be better to select the interesting topics to be saved-->
+  <node pkg="rosbag" type="record" name="rosbag_calibration"
+       args="record -o /tmp/raposa_cal -a"/>   
+
+</launch>

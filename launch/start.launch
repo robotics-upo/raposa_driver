@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <arg name="joystick" default="true"/>
+  <arg name="bag" default="false"/>
+  <arg name="use_imu" default="false"/>
+  <arg name="imu_device" default="/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A603UZCU-if00-port0"/>
+  <arg name="imu_topic" default="/arduimu_v3/imu"/>
+  <arg name="yaw_mixer" default="Bias"/>
+  <arg name="raposa_device" default="/dev/serial/by-id/usb-FTDI_MM232R_USB_MODULE_FTB3LEN7-if00-port0"/>
+  <arg name="raposa_urdf" default="$(find raposa_driver)/model/raposa_2_cam.urdf"/>
+
+  <!-- Bring up the raposa node and the imu if desired -->
+  <node name="raposa_node" pkg="raposa_driver" type="raposa_node" output="screen">
+    <param name="raposa_device" value="$(arg raposa_device)"/>
+    <param name="yaw_mixer" value="$(arg yaw_mixer)"/>
+    <param name="imu_device" value="$(arg imu_device)"/>
+    <param name="use_imu" value="$(arg use_imu)"/>
+    <param name="raposa_urdf" value="$(arg raposa_urdf)"/>
+    <param name="freq" value="20"/>
+  </node>
+  <include file="$(find arduimu_v3)/launch/arduimu_v3.launch" if="$(arg use_imu)" >
+    <arg name="device" value="$(arg imu_device)"/>
+  </include>
+  
+  <node name="raposa_joy" pkg="raposa_driver" type="raposa_teleop_joy" output="screen" if="$(arg joystick)" />
+  <node name="joy_node" pkg="joy" type="joy_node" if="$(arg joystick)" />
+  
+  <!-- TODO: This is temporary: writes all topics. It would be better to select the interesting topics to be saved-->
+  <node pkg="rosbag" type="record" name="rosbag_raposa" args="record -o /tmp/raposa -a" if="$(arg bag)"/>   
+
+</launch>
