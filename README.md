@@ -22,7 +22,7 @@ under license http://creativecommons.org/licenses/by/3.0/
   
 * Computer to be located on the platform running Ubuntu Linux 14.04 and ROS Indigo. It has to be connected via USB to the Raposa-NG control board.
 
-* An ArduIMU v3 IMU device. Note that this package depends on the package arduimu_v3, which can be retrieved in: https://github.com/robotics-upo/arduimu_v3.git.
+* An ArduIMU v3 IMU device (*optional*). Note that this package depends on the package arduimu_v3, which can be retrieved in: https://github.com/robotics-upo/arduimu_v3.git.
 
 * A wireless joystick or gamepad with at least 8 buttons and 1 axis compatible with ROS (*optional*). The system has been tested with the *Logitech Wireless F710* gamepad. 
 
@@ -126,9 +126,9 @@ Parameters of the *teresa_teleop_joy* program:
 
 * **stop_on_exit**: If true, all ROS nodes are killed when the back button is pressed (useful for stopping ROSbag).
 
-* **max_linear_velocity**: Maximun allowed linear velocity in m/s.
+* **max_linear_velocity**: Maximum allowed linear velocity in m/s.
 
-* **max_angular_velocity**: Maximun allowd angular velocity in rad/s.
+* **max_angular_velocity**: Maximum allowd angular velocity in rad/s.
 
 * **max_joy_time** If no joystick command is received within this time --> stop RAPOSA
 
