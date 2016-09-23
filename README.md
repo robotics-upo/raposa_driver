@@ -18,9 +18,9 @@ under license http://creativecommons.org/licenses/by/3.0/
 
 ## General requirements
 
-* TERESA robot with IdMind hardware setup.
+* Raposa-NG platform from IdMind.
   
-* Computer to be located on the platform running Ubuntu Linux 14.04 and ROS Indigo.
+* Computer to be located on the platform running Ubuntu Linux 14.04 and ROS Indigo. It has to be connected via USB to the Raposa-NG control board.
 
 * An ArduIMU v3 IMU device. Note that this package depends on the package arduimu_v3, which can be retrieved in: https://github.com/robotics-upo/arduimu_v3.git.
 
@@ -28,7 +28,13 @@ under license http://creativecommons.org/licenses/by/3.0/
 
 
 ## Compilation
-In order to build the package, clone it to the *src* directory of your Catkin workspace and compile it by using *catkin_make* as normal.
+In order to build the package, clone it inside the *src* directory of your Catkin workspace and compile it by using *catkin_make* as normal.
+
+## Easy start
+
+This package has a simple "start.launch" file which can be used to easily execute all the required ROS nodes for teleoperating the Raposa-NG with a joystick controller. By default, the imu is disabled. Please refer to the launch file for different options.
+
+Additionally a "calibrate.launch" is also provided for performing calibration if necessary.
 
 
 ## How to command the robot by using ROS

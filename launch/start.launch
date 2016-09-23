@@ -8,7 +8,6 @@
   <arg name="imu_topic" default="/arduimu_v3/imu"/>
   <arg name="yaw_mixer" default="Bias"/>
   <arg name="raposa_device" default="/dev/serial/by-id/usb-FTDI_MM232R_USB_MODULE_FTB3LEN7-if00-port0"/>
-  <arg name="raposa_urdf" default="$(find raposa_driver)/model/raposa_2_cam.urdf"/>
 
   <!-- Bring up the raposa node and the imu if desired -->
   <node name="raposa_node" pkg="raposa_driver" type="raposa_node" output="screen">
@@ -16,7 +15,6 @@
     <param name="yaw_mixer" value="$(arg yaw_mixer)"/>
     <param name="imu_device" value="$(arg imu_device)"/>
     <param name="use_imu" value="$(arg use_imu)"/>
-    <param name="raposa_urdf" value="$(arg raposa_urdf)"/>
     <param name="freq" value="20"/>
   </node>
   <include file="$(find arduimu_v3)/launch/arduimu_v3.launch" if="$(arg use_imu)" >
