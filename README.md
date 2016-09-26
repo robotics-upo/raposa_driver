@@ -22,7 +22,9 @@ under license http://creativecommons.org/licenses/by/3.0/
   
 * Computer to be located on the platform running Ubuntu Linux 14.04 and ROS Indigo. It has to be connected via USB to the Raposa-NG control board.
 
-* An ArduIMU v3 IMU device (*optional*). Note that this package depends on the package arduimu_v3, which can be retrieved in: https://github.com/robotics-upo/arduimu_v3.git.
+* This package **depends on the package arduimu_v3**, which can be retrieved in: https://github.com/robotics-upo/arduimu_v3.git.
+
+* An ArduIMU v3 IMU device (*optional*). 
 
 * A wireless joystick or gamepad with at least 8 buttons and 1 axis compatible with ROS (*optional*). The system has been tested with the *Logitech Wireless F710* gamepad. 
 
@@ -80,7 +82,7 @@ The next topics are published by the *raposa_teleop_joy*:
 
 ## ROS parameters
 
-Parameters of the *teresa_driver* program:
+Parameters of the *raposa_driver* program:
 
 * **raposa_device**: device of the control board (i.e. /dev/ttyUSB0). It is advised to use the id of the device: /dev/serial/by-id/usb-FTDI_MM232R_USB_MODULE_FTB3LEN7-if00-port0
 
@@ -98,7 +100,7 @@ Parameters of the *teresa_driver* program:
 
 * **publish_tf**: if true, it publishes the tf related to the odometry
 
-Parameters of the *teresa_teleop_joy* program:
+Parameters of the *raposa_teleop_joy* program:
 
 * **freq**: Frequency in hertzs of the main loop.
 
@@ -122,7 +124,7 @@ Parameters of the *teresa_teleop_joy* program:
 
 * **turbo_button**: Id of the button to enable full speed (only when pressed)
 
-* **back_button**: Id of the BACK button. ** If this button is pressed, the execution of all ROS nodes is halted  if stop_on_exit parameter is true**
+* **back_button**: Id of the BACK button. **If this button is pressed, the execution of all ROS nodes is halted if stop_on_exit parameter is true**
 
 * **stop_on_exit**: If true, all ROS nodes are killed when the back button is pressed (useful for stopping ROSbag).
 
